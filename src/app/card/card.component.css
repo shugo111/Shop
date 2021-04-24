@@ -1,0 +1,36 @@
+.card {
+  max-width: 250px;
+  min-width: 120px;
+  height: 15em;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  margin-bottom: 0px;
+  border-color: black;
+  border: 1em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.image {
+  height: 70%;
+}
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.footer {
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.name {
+  flex: 3;
+  margin: 0px;
+  padding-left: 10px;
+}
+.price {
+  flex: 1;
+  margin: 0px;
+  padding-right: 10px;
+}

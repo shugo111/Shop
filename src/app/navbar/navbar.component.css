@@ -1,0 +1,24 @@
+.navbar{
+    width: 100%;
+    display: flex;
+    background-color: black;
+    color: whitesmoke;
+    align-items: center;
+    padding-top: 0.5em;
+}
+.title{
+    flex:80%;
+    padding-left: 5%;
+    font-size: 2em;
+    font-weight: 800;
+    margin:0;
+}
+#home{
+    flex:5%;
+    font-weight: 300;
+}
+.cart{
+    flex:10%;
+    float:left;
+    
+}
