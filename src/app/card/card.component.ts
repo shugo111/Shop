@@ -1,19 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ICart } from './../cart';
+import { IProduct } from './../product';
 
 @Component({
   selector: 'Card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
 })
-export class CardComponent implements OnInit {
-  constructor() {
-    this.name = '';
-    this.price = 0;
-    this.url = '';
-  }
-  @Input() name: string;
-  @Input() price: number;
-  @Input() url: string;
+export class CardComponent {
+  constructor() {}
+  @Input() product: IProduct = { id: 0, name: '', price: 0, url: '' };
+  @Input() cart: ICart[] = [];
 
-  ngOnInit(): void {}
+  getQuantity() {
+    let item = this.cart.find((x) => x.id === this.product.id);
+  }
 }

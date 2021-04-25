@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ProductService } from './service/product.service';
 import { IProduct } from './product';
 import { ICart } from './cart';
+import { CartService } from './service/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -11,27 +12,44 @@ import { ICart } from './cart';
 export class AppComponent {
   public cart: ICart[] = [];
   public products: IProduct[] = [];
+  totalitem = { price: 0, item: 0 };
   searchText = '';
-  addToCart(item: number) {
-    if (this.cart.find((x) => x.id === item)) {
-      let index = this.cart.findIndex((x) => x.id === item);
-      this.cart[index].count += 1;
-    } else {
-      let temp: IProduct = this.products.find((x) => x.id === item) as IProduct;
-      let data: ICart = { id: item, count: 1, total: temp.price };
-      this.cart.push(data);
-    }
 
-    console.log(this.cart);
-  }
-  constructor(private service: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService
+  ) {}
 
-  getProduct() {
-    this.service.getProducts().subscribe((response) => {
+  getProducts() {
+    this.productService.getProducts().subscribe((response) => {
       this.products = response;
     });
   }
+  getProduct() {
+    this.productService.getProduct('tomato').subscribe((response) => {});
+  }
+  addToCart(product: IProduct) {
+    this.cart = this.cartService.addToCart(product);
+    console.log(this.cart);
+  }
+  getQuantity(id: number) {
+    return this.cartService.getQuantity(id);
+  }
+  totalDetails() {
+    this.totalitem = this.cartService.totalDetails();
+
+    return this.totalitem;
+  }
+  clearCart() {
+    this.cart = this.cartService.clearCart();
+    this.totalitem = { price: 0, item: 0 };
+  }
+  removeFromCart(product: IProduct) {
+    this.cart = this.cartService.removeFromCart(product);
+  }
+
   ngOnInit() {
     this.getProduct();
+    this.getProducts();
   }
 }
