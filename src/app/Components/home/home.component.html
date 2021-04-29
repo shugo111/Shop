@@ -1,0 +1,80 @@
+<div class="row p-5">
+  <div class="col-8">
+    <div class="row justify-content-center m-2">
+      <div class="col-8">
+        <input
+          type="text"
+          class="form-control"
+          id="search"
+          placeholder="Search"
+          [(ngModel)]="searchText"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        class="col-4"
+        *ngFor="let product of products | appFilter: searchText"
+      >
+        <a [routerLink]="['/product', product.id]">
+          <Card [product]="product"></Card>
+        </a>
+
+        <button
+          class="btn btn-dark ml-3"
+          *ngIf="getQuantity(product.id) === 0; else updateQuantity"
+          (click)="addToCart(product)"
+        >
+          Add To Cart
+        </button>
+        <ng-template #updateQuantity>
+          <div class="row no-gutters ml-4 mr-4">
+            <div class="col-2">
+              <button
+                (click)="removeFromCart(product)"
+                class="btn btn-dark btn-block"
+              >
+                -
+              </button>
+            </div>
+            <div class="col quantity">
+              <div>{{ getQuantity(product.id) }}</div>
+            </div>
+            <div class="col-2">
+              <button
+                (click)="addToCart(product)"
+                class="btn btn-dark btn-block"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="col"></div>
+  <div class="col-3 cart">
+    <div class="row cartheader">
+      <p>Cart</p>
+    </div>
+    <div>
+      <div class="row item pt-3" *ngFor="let item of cart">
+        <div class="col-4">
+          <b>{{ item.name }}</b>
+        </div>
+        <div class="col-4">x{{ item.count }}</div>
+        <div class="col-4">{{ item.total }}</div>
+      </div>
+    </div>
+    <div class="row totalitem pt-3">
+      <div class="col-4"></div>
+      <div class="col-4"><b>Items:</b>x{{ totalitem.item }}</div>
+      <div class="col-4"><b>Total:</b>{{ totalitem.price }}</div>
+    </div>
+    <button class="checkout btn btn-dark" (click)="clearCart()">
+      Checkout
+    </button>
+  </div>
+</div>

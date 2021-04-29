@@ -1,0 +1,20 @@
+<div class="col-3 cart">
+  <div class="row cartheader">
+    <p>Cart</p>
+  </div>
+  <div>
+    <div class="row item pt-3" *ngFor="let item of cart">
+      <div class="col-4">
+        <b>{{ item.name }}</b>
+      </div>
+      <div class="col-4">x{{ item.count }}</div>
+      <div class="col-4">{{ item.total }}</div>
+    </div>
+  </div>
+  <div class="row totalitem pt-3">
+    <div class="col-4"></div>
+    <div class="col-4"><b>Items:</b>x{{ totalitem.item }}</div>
+    <div class="col-4"><b>Total:</b>{{ totalitem.price }}</div>
+  </div>
+  <button class="checkout btn btn-dark" (click)="clearCart()">Checkout</button>
+</div>

@@ -1,0 +1,45 @@
+p {
+  margin: 0px;
+}
+
+.btn {
+  width: 83%;
+}
+.cart {
+  border: thin;
+  border-color: black;
+  border-style: solid;
+  position: relative;
+  padding: 0px;
+}
+.cartheader {
+  width: 100%;
+  background-color: black;
+  height: 2em;
+  margin: 0px;
+  color: white;
+  font-size: 2em;
+  align-items: center;
+  justify-content: center;
+}
+.item {
+  border-bottom: thin solid black;
+  margin: 0px;
+}
+.checkout {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.totalitem {
+  position: absolute;
+  bottom: 3em;
+  width: 100%;
+}
+.quantity {
+  padding-left: 30%;
+  padding-top: 5%;
+}
+a {
+  color: inherit;
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ICart } from './../cart';
-import { IProduct } from './../product';
+import { IProduct } from 'src/app/Models/product';
+import { ICart } from '../../Models/cart';
 
 @Component({
   selector: 'Card',
